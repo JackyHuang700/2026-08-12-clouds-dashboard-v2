@@ -1,8 +1,8 @@
 {
   "name": "react-typescript",
   "version": "1.0.0",
-  "homepage": ".",
   "description": "React and TypeScript example starter project",
+  "homepage": ".",
   "keywords": [
     "typescript",
     "react",

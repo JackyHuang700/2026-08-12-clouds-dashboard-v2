@@ -46,9 +46,7 @@ export default function GridnixDashboard() {
   const [isExclusiveVpc, setIsExclusiveVpc] = useState(false);
 
   // ☁️ 雲自助 (Cloud Self-Service) 狀態
-  const [selectedCloudPlatform, setSelectedCloudPlatform] = useState<
-    "aws" | "azure" | "aliyun" | "tencent" | "gcp" | "huawei"
-  >("aws");
+  const [selectedCloudPlatform, setSelectedCloudPlatform] = useState("aws");
   const [cloudServiceRequests, setCloudServiceRequests] = useState([
     {
       id: "REQ-2026081101",
@@ -99,7 +97,7 @@ export default function GridnixDashboard() {
 
     setUserBalance((prev) => prev - requiredAmount);
 
-    const platformNames = {
+    const platformNames: Record<string, string> = {
       aws: "AWS (Amazon Web Services)",
       azure: "Microsoft Azure",
       aliyun: "Aliyun 阿里雲",
@@ -497,46 +495,44 @@ export default function GridnixDashboard() {
                       1. Select Cloud Platform 選擇雲平台 (預扣固定 $50 USD)
                     </label>
                     <div className="grid grid-cols-3 gap-3">
-                      {(
-                        [
-                          {
-                            id: "aws",
-                            name: "AWS",
-                            desc: "Amazon Web Services",
-                            icon: "☁️",
-                          },
-                          {
-                            id: "azure",
-                            name: "Microsoft Azure",
-                            desc: "Azure Partner Account",
-                            icon: "🔷",
-                          },
-                          {
-                            id: "aliyun",
-                            name: "Aliyun 阿里雲",
-                            desc: "阿里雲企業專屬子帳戶",
-                            icon: "🟠",
-                          },
-                          {
-                            id: "tencent",
-                            name: "Tencent 騰訊雲",
-                            desc: "騰訊雲海外獨立帳號",
-                            icon: "🐧",
-                          },
-                          {
-                            id: "gcp",
-                            name: "Google Cloud (GCP)",
-                            desc: "GCP Project Console",
-                            icon: "🌐",
-                          },
-                          {
-                            id: "huawei",
-                            name: "Huawei 華為雲",
-                            desc: "華為雲國際站帳號",
-                            icon: "🔴",
-                          },
-                        ] as const
-                      ).map((p) => (
+                      {[
+                        {
+                          id: "aws",
+                          name: "AWS",
+                          desc: "Amazon Web Services",
+                          icon: "☁️",
+                        },
+                        {
+                          id: "azure",
+                          name: "Microsoft Azure",
+                          desc: "Azure Partner Account",
+                          icon: "🔷",
+                        },
+                        {
+                          id: "aliyun",
+                          name: "Aliyun 阿里雲",
+                          desc: "阿里雲企業專屬子帳戶",
+                          icon: "🟠",
+                        },
+                        {
+                          id: "tencent",
+                          name: "Tencent 騰訊雲",
+                          desc: "騰訊雲海外獨立帳號",
+                          icon: "🐧",
+                        },
+                        {
+                          id: "gcp",
+                          name: "Google Cloud (GCP)",
+                          desc: "GCP Project Console",
+                          icon: "🌐",
+                        },
+                        {
+                          id: "huawei",
+                          name: "Huawei 華為雲",
+                          desc: "華為雲國際站帳號",
+                          icon: "🔴",
+                        },
+                      ].map((p) => (
                         <div
                           key={p.id}
                           onClick={() => setSelectedCloudPlatform(p.id)}
